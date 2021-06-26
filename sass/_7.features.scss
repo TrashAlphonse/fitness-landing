@@ -1,0 +1,161 @@
+.features {
+    grid-column: container-start / container-end;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(40rem, 1fr));
+
+    &__content {
+        display: grid;
+        gap: 2vw;
+        padding: 2rem 4rem;
+        align-items: center;
+
+        &__title {
+            position: relative;
+            font-weight: font-weight(font-weight-bold) !important;
+            @extend %sec-heading;
+            text-align: center;
+            z-index: 1;
+            align-self: end;
+        }
+
+        &__title::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-color: var(--color-primary-m);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        &:hover &__title::before,
+        &:active &__title::before {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        &__desc {
+            @extend %sec-desc;
+            padding: 1rem;
+            text-align: center;
+            background-color: var(--color-primary-m);
+        }
+
+        &__link:link,
+        &__link:visited {
+            position: relative;
+            padding: 1rem 1.7rem;
+            justify-self: start;
+            transition: all 0.5s ease-in-out;
+            overflow: hidden;
+
+            span {
+                position: absolute;
+                display: block;
+            }
+
+            span:nth-child(1) {
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 0.5rem;
+                background-image: linear-gradient(90deg, transparent, var(--color-primary));
+                animation: border1 1s linear infinite;
+                animation-delay: 0s;
+            }
+
+            span:nth-child(3) {
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: 0.5rem;
+                background-image: linear-gradient(270deg, transparent, var(--color-primary));
+                animation: border3 1s linear infinite;
+                animation-delay: 0s;
+            }
+
+            span:nth-child(2) {
+                top: 0;
+                right: 0;
+                width: 0.5rem;
+                height: 100%;
+                background-image: linear-gradient(180deg, transparent, var(--color-primary));
+                animation: border2 1s linear infinite;
+                animation-delay: 0.5s;
+            }
+
+            span:nth-child(4) {
+                top: 0;
+                left: 0;
+                width: 0.5rem;
+                height: 100%;
+                background-image: linear-gradient(360deg, transparent, var(--color-primary));
+                animation: border4 1s linear infinite;
+                animation-delay: 0.5s;
+            }
+        }
+
+        &__link:hover,
+        &__link:active {
+            background-color: var(--color-primary);
+        }
+        
+    }
+
+    @include media-small {
+        & {
+            grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+        }
+    }
+}
+
+@for $img from 1 through 9 {
+    .features__content:nth-child(#{$img}) {
+        background-image: url("../img/features/features-#{$img}.jpg");
+        @extend %bg;
+    }
+}
+
+@keyframes border1 {
+    0% {
+        left: -100%;
+    }
+
+    100% {
+        left: 100%;
+    }
+}
+
+@keyframes border2 {
+    0% {
+        top: -100%;
+    }
+
+    100% {
+        top: 100%;
+    }
+}
+
+@keyframes border3 {
+    0% {
+        left: 100%;
+    }
+
+    100% {
+        left: -100%;
+    }
+}
+
+@keyframes border4 {
+    0% {
+        top: 100%;
+    }
+
+    100% {
+        top: -100%;
+    }
+}

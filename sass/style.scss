@@ -1,0 +1,111 @@
+@mixin media-small {
+    @media screen and (max-width: breakpoint(breakpoint-small)) {
+        @content;
+    }
+}
+
+@mixin media-medium {
+    @media screen and (max-width: breakpoint(breakpoint-medium)) {
+        @content;
+    }
+}
+
+
+@mixin media-tablet {
+    @media screen and (max-width: breakpoint(breakpoint-tablet)) {
+        @content;
+    }
+}
+
+@mixin media-desktop {
+    @media screen and (min-width: breakpoint(breakpoint-desktop)) {
+        @content;
+    }
+}
+
+@import "1.reset";
+@import "2.variables";
+@import "3.utilities";
+@import "4.header";
+@import "5.showcase";
+@import "6.motto";
+@import "7.features";
+@import "8.trainers";
+@import "9.testimonials";
+@import "10.clients";
+@import "11.register";
+@import "12.footer";
+
+
+// Placeholder Rulesets
+
+%bg {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+%sec-padding {
+    padding: 6vh 4vw;
+}
+
+%sec-heading {
+    font-size: font-size(font-size-medium);
+    color: var(--color-quinary);
+    font-weight: font-weight(font-weight-light);
+    letter-spacing: 0.2rem;
+}
+
+%sec-desc {
+    font-size: font-size(font-size-small);
+    color: var(--color-quinary);
+    letter-spacing: 0.2rem;
+    font-family: "Balsamiq Sans", cursive;
+}
+
+%sec-h3 {
+    font-size: font-size(font-size-small);
+    color: var(--color-quinary);
+}
+
+%sec-h4 {
+    color: var(--color-quinary);
+}
+
+
+//Scroll to top button
+
+.scroll {
+    position: fixed;
+    bottom: 70rem;
+    right: 4rem;
+    width: 4rem;
+    height: 4rem;
+    background-color: var(--color-secondary-m);
+    background-image: url(../img/scroll/scroll.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    padding: 1rem;
+    border-radius: 50%;
+    z-index: 30;
+    cursor: pointer;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.5s cubic-bezier(1,0,0,1);
+}
+
+.scroll.active {
+    visibility: visible;
+    opacity: 1;
+    bottom: 4rem;
+}
+
+// Smooth Dark Mode Transition
+html.transition,
+html.transition *,
+html.transition *::before,
+html.transition *::after {
+    transition: all 0.5s !important;
+    transition-delay: 0 !important;
+}
