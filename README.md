@@ -9,4 +9,4 @@ Techniques:
 - CSS custom properties (light/dark mode);
 - Javascript (mobile nav, scroll, carousel)
 
-Live url: 
+Live url: https://fitness-landing-three.vercel.app/
