@@ -1,4 +1,3 @@
-This is a tutorial website.
 Techniques:
 
 - SASS (variables, functions, mixins, rulesets, maps);
